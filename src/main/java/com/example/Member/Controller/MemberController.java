@@ -27,15 +27,12 @@ public class MemberController {
             //@RequestParam("memberEmail") String memberEmail,
             //@RequestParam("memberPassword") String memberPassword,
             //@RequestParam("memberName") String memberName){
-
-
-
         System.out.println("MemberController.save");
         System.out.println("memberDTO = " + memberDTO);
         memberService.save(memberDTO);
 
-
-        return "index";
+    //회원가입 마치면 로그인 화면
+        return "login";
     }
 
 }

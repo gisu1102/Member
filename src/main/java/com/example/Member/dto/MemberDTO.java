@@ -9,6 +9,8 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+
+//정보 전달을 위한 객체 (Data Transfer Object)
 public class MemberDTO {
     private Long id;
     private String memberEmail;
