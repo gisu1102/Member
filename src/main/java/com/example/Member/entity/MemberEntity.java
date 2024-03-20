@@ -41,6 +41,17 @@ public class MemberEntity {
 
         return  memberEntity;
     }
+    public  static MemberEntity toUpdateMemberEntity(MemberDTO memberDTO)
+    {
+        MemberEntity memberEntity = new MemberEntity();
+        // update - id O -> id수정
+        memberEntity.setId(memberDTO.getId());
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+
+        return  memberEntity;
+    }
 
 
 }
