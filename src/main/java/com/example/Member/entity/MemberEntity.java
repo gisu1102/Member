@@ -13,8 +13,9 @@ import org.springframework.stereotype.Controller;
 
 public class MemberEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //고유 id 키 값 auto_increment
     private Long id;
+    //데이터베이스 테이블 에 매핑 - 일관성유지
     @Column  (unique = true) //unique  제약조건
     private String memberEmail;
 

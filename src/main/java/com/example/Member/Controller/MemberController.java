@@ -100,7 +100,7 @@ public class MemberController {
 
 
     }
-    //데이터 서버에 제출, 회원 정보 업데이트 요청
+    //post-데이터 서버에 제출, 회원 정보 업데이트 요청
     @PostMapping("/member/update")
     //http에서 받은 값 필드에 매핑
     public String update(@ModelAttribute MemberDTO memberDTO){
