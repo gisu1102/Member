@@ -12,6 +12,8 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     //이메일로 회원 정보 조회 select * from member_table where member_email=?
 
     //optional-> null방지
+    //JPA 가 자동구현x -> 직접 구현
+    //JPA가 메소드 의도 파악 - 명시적 쿼리 구현할필요없이 자동구현
     Optional<MemberEntity> findByMemberEmail(String memberEmail);
 
 

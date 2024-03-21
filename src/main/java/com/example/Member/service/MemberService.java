@@ -10,11 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@RequiredArgsConstructor
+@Service // spring  에서 service 역할
+@RequiredArgsConstructor //lombok 에너테이션 - final에대한 생성자 자동생성
+
+//비즈니스 로직 처리 / Controller(DTO) , Datebase(Entity)
+//save, login, findAll, findById, updateForm, update, deleteById 메소드 구현
 
 public class MemberService {
     private final MemberRepository memberRepository;
+
+
     public void save(MemberDTO memberDTO) {
         // 1. dto -> entitiy 변환!
         // 2. repository save메소드 호출
@@ -31,7 +36,7 @@ public class MemberService {
         Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
         if (byMemberEmail.isPresent()){
             //계정 있다
-            //optional로 가져온 객체 벗겨내기-get entity로 변환
+            //optional로 가져온 객체 벗겨내기-get- entity로 변환
             MemberEntity memberEntity = byMemberEmail.get();
             //데이터베이스 - 클라이언트(입력비번) 비교하기
             // == 은 레퍼런스 비교 ,  equals 는 값 비교 객체가 다르면
@@ -66,14 +71,15 @@ public class MemberService {
 
     }
 
-    //controller 로 보내니까 entity->dto , optional -> entity (get)
+
     public MemberDTO findById(Long id) {
+        //id = null 일 가능성 -> optional
         Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
         if (optionalMemberEntity.isPresent()){
         //    MemberEntity memberEntity = optionalMemberEntity.get();
         //    MemberDTO memberDTO =MemberDTO.toMemberDTO(memberEntity);
             //    return  memberDTO;
-
+            // controller 로 보내니까 optional -> entity (get) , entity->dto ,
             return MemberDTO.toMemberDTO(optionalMemberEntity.get());
 
         } else {
@@ -95,7 +101,7 @@ public class MemberService {
     }
 
     public void update(MemberDTO memberDTO) {
-        //save id inset update 알아서 , db - dto->entity
+        //save id insert update 알아서 , db - dto->entity
         memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
 
     }
